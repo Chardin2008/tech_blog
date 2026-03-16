@@ -39,6 +39,7 @@ class Category
     public function setName(string $name): static
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -56,6 +57,7 @@ class Category
             $this->posts->add($post);
             $post->addCategory($this);
         }
+
         return $this;
     }
 
@@ -64,6 +66,7 @@ class Category
         if ($this->posts->removeElement($post)) {
             $post->removeCategory($this);
         }
+
         return $this;
     }
 }

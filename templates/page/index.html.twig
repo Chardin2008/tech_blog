@@ -1,11 +1,37 @@
-{% block body%}
-    <h1> Tech Blog</h1>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1 style="margin-bottom: 2.5rem; font-weight: 800; font-size: 2.5rem; letter-spacing: -1px;">
+        Dernières publications
+    </h1>
+
     {% for post in posts %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.content }}</p>
-        
+        <article>
+            <div style="margin-bottom: 1rem;">
+                {% for category in post.categories %}
+                    <span class="category-tag">{{ category.name }}</span>
+                {% endfor %}
+            </div>
+
+            <h2 style="margin-bottom: 1rem;">
+                <a href="{{ path('post_show', {id: post.id}) }}" style="text-decoration: none; color: var(--text-main); transition: color 0.2s;">
+                    {{ post.title }}
+                </a>
+            </h2>
+
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.7;">
+                {{ post.content|slice(0, 200) }}...
+            </p>
+
+            <a href="{{ path('post_show', {id: post.id}) }}" class="btn-read-more">
+                Lire l'article complet →
+            </a>
+        </article>
+    {% else %}
+        <div style="text-align: center; padding: 3rem; background: white; border-radius: 16px;">
+            <p style="color: var(--text-muted);">Aucun article n'a été publié pour le moment.</p>
+        </div>
     {% endfor %}
-    <p> latest articles about IT and development.</p>
+</div>
 {% endblock %}
-
-

@@ -7,7 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
-#[ORM\HasLifecycleCallbacks]
+#[ORM\HasLifecycleCallbacks] // Indispensable pour que le PrePersist fonctionne
 class Comment
 {
     #[ORM\Id]
@@ -18,7 +18,7 @@ class Comment
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(length: 255)]
@@ -28,6 +28,13 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private ?Post $post = null;
 
+    // Constructeur pour initialiser la date par défaut et éviter les erreurs
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
+
+    // Cette méthode est appelée automatiquement par Doctrine avant la sauvegarde
     #[ORM\PrePersist]
     public function setCreatedAtValue(): void
     {
@@ -54,6 +61,9 @@ class Comment
     {
         return $this->createdAt;
     }
+
+    // Pas besoin de setCreatedAt() public si tu utilises PrePersist
+    // mais si tu veux être sûr, tu peux le laisser sans risque.
 
     public function getUsername(): ?string
     {

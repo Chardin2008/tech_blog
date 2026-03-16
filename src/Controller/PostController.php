@@ -5,41 +5,39 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Entity\Comment;
 use App\Form\CommentType;
-use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
-final class PostController extends AbstractController
+class PostController extends AbstractController
 {
-    #[Route('/post', name: 'app_post')]
-    public function index(PostRepository $postRepository): Response
-    {
-        return $this->render('post/index.html.twig', [
-            'posts' => $postRepository->findAll(),
-        ]);
-    }
-
-    #[Route('/post/{id}', name: 'app_post_show', methods: ['GET', 'POST'])]
-    public function show(Post $post, Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/post/{id}', name: 'post_show')]
+    public function show(Post $post, Request $request, EntityManagerInterface $em): Response
     {
         $comment = new Comment();
-        $commentForm = $this->createForm(CommentType::class, $comment);
-        $commentForm->handleRequest($request);
+        
+        // On crée le formulaire
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
 
-        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
+            // 1. On lie le commentaire au post actuel
             $comment->setPost($post);
-            $entityManager->persist($comment);
-            $entityManager->flush();
+            
+            
+            $em->persist($comment);
+            $em->flush();
 
-            return $this->redirectToRoute('app_post_show', ['id' => $post->getId()]);
+            $this->addFlash('success', 'Votre commentaire a bien été publié !');
+
+            return $this->redirectToRoute('post_show', ['id' => $post->getId()]);
         }
 
         return $this->render('post/show.html.twig', [
             'post' => $post,
-            'commentForm' => $commentForm->createView(),
+            'commentForm' => $form->createView(), // Changé 'form' en 'commentForm' pour correspondre au Twig
         ]);
     }
 }

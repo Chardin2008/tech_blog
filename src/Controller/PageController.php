@@ -2,21 +2,25 @@
 
 namespace App\Controller;
 
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
-use App\Repository\PostRepository;
-final class PageController extends AbstractController
+use Symfony\Component\Routing\Annotation\Route;
+
+class PageController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(postrepository $postRepository): Response
-    { $posts = $postRepository->findAll();
+    public function index(PostRepository $postRepository): Response
+    {
+        // récupérer tous les articles
+        $posts = $postRepository->findAll();
+
         return $this->render('page/index.html.twig', [
-            'controller_name' => 'PageController',
             'posts' => $posts,
         ]);
     }
-     #[Route('/about', name:'app_about')]
+
+    #[Route('/about', name: 'app_about')]
     public function about(): Response
     {
         return $this->render('page/about.html.twig');

@@ -1,3 +1,155 @@
+/* RESET BASIQUE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* BODY */
 body {
-    background-color: skyblue;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 80px; /* espace pour le header fixe */
+}
+
+/* HEADER */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+header img {
+    height: 50px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #00bfff;
+}
+
+/* TITRES */
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #1a1a1a;
+    margin-top: 20px;
+}
+
+/* ARTICLES */
+article {
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 800px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* LIEN POST */
+a.post-link {
+    text-decoration: none;
+    color: #333;
+}
+
+a.post-link:hover {
+    color: #00bfff;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #1a1a1a;
+    color: white;
+    margin-top: 50px;
+}
+
+/* FORMULAIRE COMMENTAIRES */
+.comment-form {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.comment-form input,
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.comment-form button {
+    padding: 10px 20px;
+    background-color: #00bfff;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #0080c0;
+}
+/* Dans ton fichier assets/styles/app.css */
+.comments-container {
+    max-height: 400px; /* Tu bloques la hauteur */
+    overflow-y: auto;   /* Ajoute une scrollbar si ça dépasse */
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.comment-card {
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.comments-scroll-area {
+    max-height: 400px;      /* Fixe la hauteur max de la zone */
+    overflow-y: auto;       /* Active la barre de défilement uniquement si nécessaire */
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.comment-box {
+    background: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 4px solid #007bff; /* Petite touche esthétique sur le côté */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }

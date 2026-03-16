@@ -1,0 +1,163 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --main-bg: #f8fafc;
+    --card-bg: #ffffff;
+    --primary: #6366f1; 
+    --primary-hover: #4f46e5;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --accent: #0ea5e9;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--main-bg);
+    color: var(--text-main);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem 10%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    margin-left: 2rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 20px;
+}
+
+article {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #f1f5f9;
+}
+
+article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+article h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    color: var(--text-main);
+}
+
+.category-tag {
+    display: inline-block;
+    background: #e0e7ff;
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.btn-read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.btn-read-more:hover {
+    border-bottom-color: var(--primary);
+    gap: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+.post-detail {
+    background: transparent !important; /* On enlève le fond blanc de la carte pour le détail */
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-top: 2rem;
+}
+
+.post-content {
+    margin-top: 3rem;
+    white-space: pre-wrap; /* Pour garder les retours à la ligne du texte */
+}
+
+/* Style spécifique pour les titres dans l'article */
+.post-content h2 {
+    margin-top: 2.5rem;
+    font-weight: 700;
+}
+/* Dans ton fichier assets/styles/app.css */
+.comments-container {
+    max-height: 400px; /* Tu bloques la hauteur */
+    overflow-y: auto;   /* Ajoute une scrollbar si ça dépasse */
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+.comment-card {
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.comments-scroll-area {
+    max-height: 400px;      /* Fixe la hauteur max de la zone */
+    overflow-y: auto;       /* Active la barre de défilement uniquement si nécessaire */
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.comment-box {
+    background: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 4px solid #007bff; /* Petite touche esthétique sur le côté */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}

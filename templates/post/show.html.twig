@@ -3,35 +3,50 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block body %}
-    <article>
-        <h1>{{ post.title }}</h1>
-        
-        <div class="post-content">
-            {{ post.content|nl2br }}
-        </div>
 
-        <hr>
+<article class="article-card">
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+</article>
 
-        <h3>Commentaires</h3>
+<hr>
+
+{# 1. FORMULAIRE EN HAUT #}
+<section class="comment-section">
+    <h2>Ajouter un commentaire</h2>
+
+    <div class="comment-form">
+        {{ form_start(commentForm) }}
+            {{ form_row(commentForm.username) }}
+            {{ form_row(commentForm.content) }}
+            <button type="submit" class="btn-submit">Envoyer</button>
+        {{ form_end(commentForm) }}
+    </div>
+
+    <hr>
+
+    {# 2. LISTE DES COMMENTAIRES EN BAS #}
+    <h2>Commentaires</h2>
+
+    <div class="comments-scroll-area">
+
         {% for comment in post.comments %}
-            <div class="comment" style="border-bottom: 1px solid #eee; margin-bottom: 10px;">
-                <p>{{ comment.content }}</p>
+
+            <div class="comment-box">
+                <strong>{{ comment.username }}</strong>
+                <small> le {{ comment.createdAt|date('d/m/Y à H:i') }}</small>
+
+                <p>{{ comment.content|nl2br }}</p>
             </div>
+
         {% else %}
-            <p>Aucun commentaire pour le moment.</p>
+
+            <p>Aucun commentaire pour le moment. Soyez le premier !</p>
+
         {% endfor %}
 
-        <hr>
+    </div>
 
-        <h3>Laisser un commentaire</h3>
-        {{ form_start(commentForm) }}
-            {{ form_widget(commentForm) }}
-            <button class="btn" style="background-color: #007bff; color: white; padding: 10px; border: none; cursor: pointer;">
-                {{ button_label|default('Enregistrer') }}
-            </button>
-        {{ form_end(commentForm) }}
+</section>
 
-        <br>
-        <a href="{{ path('app_post') }}">Retour à la liste</a>
-    </article>
 {% endblock %}
