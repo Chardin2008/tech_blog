@@ -112,7 +112,7 @@ footer {
     font-size: 0.9rem;
 }
 .post-detail {
-    background: transparent !important; /* On enlève le fond blanc de la carte pour le détail */
+    background: transparent !important; 
     box-shadow: none !important;
     padding: 0 !important;
     margin-top: 2rem;
@@ -120,18 +120,17 @@ footer {
 
 .post-content {
     margin-top: 3rem;
-    white-space: pre-wrap; /* Pour garder les retours à la ligne du texte */
+    white-space: pre-wrap; 
 }
 
-/* Style spécifique pour les titres dans l'article */
 .post-content h2 {
     margin-top: 2.5rem;
     font-weight: 700;
 }
-/* Dans ton fichier assets/styles/app.css */
+
 .comments-container {
-    max-height: 400px; /* Tu bloques la hauteur */
-    overflow-y: auto;   /* Ajoute une scrollbar si ça dépasse */
+    max-height: 400px; 
+    overflow-y: auto;   
     border: 1px solid #ddd;
     padding: 15px;
     background-color: #f9f9f9;
@@ -145,8 +144,8 @@ footer {
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 .comments-scroll-area {
-    max-height: 400px;      /* Fixe la hauteur max de la zone */
-    overflow-y: auto;       /* Active la barre de défilement uniquement si nécessaire */
+    max-height: 400px;      
+    overflow-y: auto;       
     padding: 15px;
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;
@@ -158,6 +157,6 @@ footer {
     background: #ffffff;
     padding: 10px;
     margin-bottom: 10px;
-    border-left: 4px solid #007bff; /* Petite touche esthétique sur le côté */
+    border-left: 4px solid #007bff; 
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }

@@ -62,8 +62,7 @@ class Comment
         return $this->createdAt;
     }
 
-    // Pas besoin de setCreatedAt() public si tu utilises PrePersist
-    // mais si tu veux être sûr, tu peux le laisser sans risque.
+
 
     public function getUsername(): ?string
     {
