@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}TECH_BLOG | Innovation & Tech{% endblock %}</title>
+        <title>{% block title %}TECH_BLOG | Innovation  Tech{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2290%22>💻</text></svg>">
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap">
@@ -16,7 +16,11 @@
     </head>
     <body>
         <header>
-            <a href="{{ path('app_home') }}" class="logo">TECH_BLOG</a>
+            <a href="{{ path('app_home') }}" class="logo">
+                
+                <img src="{{ asset('images/logo-tech-trendz.png') }}" alt="TECH_BLOG" style="height: 45px; width: auto; display: block;">
+            </a>
+            
             <nav>
                 <a href="{{ path('app_home') }}">Home</a>
                 <a href="{{ path('app_about') }}">About</a>
